@@ -10,6 +10,11 @@ export const initServer = async () => {
     const app = express();
     const PORT = process.env.PORT;
 
+    app.use(express.json());
+    app.use(cors());
+    app.use(helmet());
+    app.use(morgan('dev'));
+
     try {
         await dbConnection();
 
