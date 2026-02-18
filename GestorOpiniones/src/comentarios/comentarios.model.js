@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-const commentariosSchema = mongoose.Schema(
+const comentariosSchema = mongoose.Schema(
     {
         comment:{
             type: String,
@@ -18,5 +18,10 @@ const commentariosSchema = mongoose.Schema(
             ref: 'Post',
             required: [true, 'Tienes que colocar el id de la publicación válido']
         }
+    },
+    {
+        timestamps: true
     }
 )
+
+export default mongoose.model('Comentarios', comentariosSchema);
