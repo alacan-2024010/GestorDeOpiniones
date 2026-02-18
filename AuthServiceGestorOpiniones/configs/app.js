@@ -5,6 +5,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './db.js';
+import authRoutes from '../src/auth/auth.routes.js'
+
+const BASE_PATH = '/api/v1';
 
 export const initServer = async () => {
     const app = express();
@@ -16,16 +19,28 @@ export const initServer = async () => {
     app.use(morgan('dev'));
 
     try {
-        await dbConnection();
+        await dbConnection()
 
-        app.use(errorHandler);
+        // Rutas
+        app.use(`${BASE_PATH}/auth`, authRoutes)
+
+        // Health check (opcional pero recomendado)
+        app.get(`${BASE_PATH}/health`, (req, res) => {
+            res.status(200).json({
+                status: 'OK',
+                service: 'GestorOpiniones Auth',
+                timestamp: new Date()
+            })
+        })
 
         app.listen(PORT, () => {
-            console.log(`GestorOpinions Auth Server running on port ${PORT}`);
-            console.log(`Health check: http://localhost:${PORT}${BASE_PATH}/health`);
-        });
+            console.log(`GestorOpiniones Auth Server running on port ${PORT}`)
+            console.log(`Health check: http://localhost:${PORT}${BASE_PATH}/health`)
+        })
+
     } catch (err) {
-        console.error(`Error starting Auth Server: ${err.message}`);
-        process.exit(1);
+        console.error(`Error starting server: ${err.message}`)
+        process.exit(1)
     }
+
 };
