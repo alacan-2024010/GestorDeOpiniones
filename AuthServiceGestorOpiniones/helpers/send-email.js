@@ -9,7 +9,8 @@ export const sendVerificationEmail = async (email, token) => {
         }
     })
 
-    const verificationLink  = `http://localhost:3006/api/auth/verify/${token}`
+    const frontendUrl = 'http://localhost:3006';
+    const verificationUrl  = `${frontendUrl}/verify-email?token=${token}`;
 
     await transporter.sendMail({
         to: email,
@@ -18,7 +19,7 @@ export const sendVerificationEmail = async (email, token) => {
             <h2>Verifica tu cuenta</h2>
             <p>Haz click en el siguiente enlace para activar tu cuenta:</p>
             <br><br>
-            <a href="${verificationLink}">${verificationLink}</a>
+            <a href="${verificationUrl}">${verificationUrl}</a>
             `
     })
 }
