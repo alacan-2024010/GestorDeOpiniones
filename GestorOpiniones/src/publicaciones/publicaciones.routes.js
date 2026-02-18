@@ -38,3 +38,5 @@ router.delete(
     validateJWT,
     deletePublication
 )
+
+export default router;
