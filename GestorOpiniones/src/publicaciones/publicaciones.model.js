@@ -1,6 +1,6 @@
 'use strict';
 
-import mongoose from "mongoose";
+import{Schema,mongoose} from 'mongoose';
 
 const publicacionesSchema =mongoose.Schema(
     {

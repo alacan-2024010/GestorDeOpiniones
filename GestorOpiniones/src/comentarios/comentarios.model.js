@@ -1,6 +1,6 @@
 'use strict';
 
-import mongoose from 'mongoose';
+import{Schema,mongoose} from 'mongoose';
 
 const comentariosSchema = mongoose.Schema(
     {
@@ -13,9 +13,9 @@ const comentariosSchema = mongoose.Schema(
             type: String, // viene del JWT de AuthService
             required: [true, 'Tienes que colocar un uid válido']
         },
-        post:{
+        publication:{
             type: Schema.Types.ObjectId,
-            ref: 'Post',
+            ref: 'Publicaciones',
             required: [true, 'Tienes que colocar el id de la publicación válido']
         }
     },

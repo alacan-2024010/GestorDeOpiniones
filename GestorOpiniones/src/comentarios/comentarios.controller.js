@@ -91,7 +91,7 @@ export const getYourComments = async (req, res) => {
 export const updateComment = async(req, res)=>{
     try {
         const{id} = req.params;
-        const comment =  await Comment.findById(id);
+        const comment =  await Comentarios.findById(id);
 
         if(!comment){
             return res.status(404).json({
@@ -107,7 +107,7 @@ export const updateComment = async(req, res)=>{
             })
         }
 
-        const updateComment = await Comment.findByIdAndUpdate(
+        const updateComment = await Comentarios.findByIdAndUpdate(
             id,
             req.body,
             { new: true }

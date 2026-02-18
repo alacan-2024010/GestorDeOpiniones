@@ -49,12 +49,12 @@ export const getPublications = async(req,res)=>{
             sort: { createdAt: -1 }
         };
 
-        const publications = await Post.find()
+        const publications = await Publicaciones.find()
             .limit(options.limit * 1)
             .skip((options.page - 1) * options.limit)
             .sort(options.sort);
 
-        const total = await Post.countDocuments();
+        const total = await Publicaciones.countDocuments();
 
         res.status(200).json({
             success: true,
@@ -126,7 +126,7 @@ export const updatePublication = async(req,res)=>{
             });
         }
 
-        const updatedPublication = await Post.findByIdAndUpdate(
+        const updatedPublication = await Publicaciones.findByIdAndUpdate(
             id,
             req.body,
             { new: true }

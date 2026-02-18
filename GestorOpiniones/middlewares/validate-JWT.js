@@ -30,14 +30,12 @@ export const validateJWT = (req, res, next) => {
 
     try {
 
-        const decoded = jwt.verify(token, secret);
+        const decoded = jwt.verify(token, jwtConfig.secret);
 
         req.user = {
             id: decoded.uid //uid porque asi se genera en el AuthService
         };
-
-        next();
-
+        
         next();
 
     } catch (error) {

@@ -10,7 +10,7 @@ import {
 const router = new Router;
 
 router.post(
-    '/create',
+    '/create/:publicationId',
     validateJWT,
     createComment
 )
