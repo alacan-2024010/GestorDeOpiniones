@@ -5,17 +5,28 @@ import { generateVerificationToken } from '../../helpers/generate-verification-t
 import { sendVerificationEmail } from '../../helpers/send-email.js'
 import jwt from 'jsonwebtoken'
 
-export const register = async ({ username, email, password , photo}) => {
-    const exists = await User.findOne({ 
-        where: { email } 
+export const register = async ({ username, email, password, photo }) => {
+    const exists = await User.findOne({
+        where: { email }
+    })
+    if (exists) throw new Error('Correo ya registrado')
+
+    const usernameExists = await User.findOne({
+        where: {username}
     })
 
-    if (exists) throw new Error('Correo ya registrado')
+    if (usernameExists) throw new Error('username ya registrado')
+    
+    if (password.length < 8) {
+        throw new Error('La contraseña debe tener mínimo 8 caracteres')
+    }
+
+    const hashedPassword = await hashPassword(password)
 
     const user = await User.create({
         username,
         email,
-        password: await hashPassword(password),
+        password: hashedPassword,
         photo,
         isActive: false
     })
@@ -23,8 +34,9 @@ export const register = async ({ username, email, password , photo}) => {
     const token = generateVerificationToken(user.id)
     await sendVerificationEmail(email, token)
 
-    return { 
-        message: 'Revisa tu correo para verificar la cuenta' }
+    return {
+        message: 'Revisa tu correo para verificar la cuenta'
+    }
 }
 
 export const verify = async (token) => {
@@ -52,3 +64,29 @@ export const login = async ({ email, password }) => {
         user
     }
 }
+
+export const changePassword = async (userId, oldPassword, newPassword) => {
+
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+        throw new Error('ID de usuario no encontrado');
+    }
+
+    const validPassword = await comparePassword(oldPassword, user.password);
+
+    if (!validPassword) {
+        throw new Error('La contraseña actual es incorrecta');
+    }
+
+    if (newPassword.length < 8) {
+        throw new Error('La nueva contraseña debe tener mínimo 8 caracteres');
+    }
+
+    user.password = await hashPassword(newPassword);
+    await user.save();
+
+    return {
+        message: 'Contraseña actualizada correctamente'
+    };
+};

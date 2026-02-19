@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { register, login, verify } from './auth.controller.js'
+import { register, login, verify , changePassword} from './auth.controller.js'
 import { validateJWT } from '../../middlewares/validate-jwt.js'
 import { uploadUserImage } from '../../middlewares/file-uploader.js';
 import { cleanUploaderFileOnFinish } from '../../middlewares/delete-file-on-error.js';
@@ -28,5 +28,11 @@ router.get(
         res.json(req.user)
     }
 )
+
+router.put(
+    '/changePassword',
+    validateJWT,
+    changePassword
+);
 
 export default router;
