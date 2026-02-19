@@ -18,6 +18,10 @@ const publicacionesSchema =mongoose.Schema(
             type:String,
             required: [true, 'La publicación tiene que tener contenido'],
         },
+        photo:{
+            type:String,
+            default: null
+        },
         user:{
             type: String, // viene del JWT de AuthService
             required: true
