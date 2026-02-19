@@ -1,11 +1,15 @@
 import {Router} from 'express';
 import { register, login, verify } from './auth.controller.js'
 import { validateJWT } from '../../middlewares/validate-jwt.js'
+import { uploadUserImage } from '../../middlewares/file-uploader.js';
+import { cleanUploaderFileOnFinish } from '../../middlewares/delete-file-on-error.js';
 
 const router = Router()
 
 router.post(
     '/register', 
+    uploadUserImage.single('photo'),
+    cleanUploaderFileOnFinish,
     register
 )
 router.post(

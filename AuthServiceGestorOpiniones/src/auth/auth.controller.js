@@ -10,12 +10,17 @@ export const register = async (req, res) => {
         message: 'Username, email y password son obligatorios'
       })
     }
-
-    const result = await authService.register({
+    const userData ={
       username,
       email,
       password
-    })
+    }
+
+    if(req.file){
+      userData.photo = req.file.path;
+    }
+
+    const result = await authService.register(userData);
 
     res.status(201).json(result)
 

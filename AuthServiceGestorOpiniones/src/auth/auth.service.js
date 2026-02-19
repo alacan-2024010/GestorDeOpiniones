@@ -5,7 +5,7 @@ import { generateVerificationToken } from '../../helpers/generate-verification-t
 import { sendVerificationEmail } from '../../helpers/send-email.js'
 import jwt from 'jsonwebtoken'
 
-export const register = async ({ username, email, password }) => {
+export const register = async ({ username, email, password , photo}) => {
     const exists = await User.findOne({ 
         where: { email } 
     })
@@ -16,6 +16,7 @@ export const register = async ({ username, email, password }) => {
         username,
         email,
         password: await hashPassword(password),
+        photo,
         isActive: false
     })
 
