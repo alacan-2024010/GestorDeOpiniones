@@ -13,13 +13,18 @@ export const createPublication = async(req,res)=>{
             })
         }
 
-        const publication = new Publicaciones({
+        const publicationData = {
             title,
             category,
             content,
             user: req.user.id
-        })
+        };
 
+        if (req.file) {
+            publicationData.photo = req.file.path;
+        }
+        
+        const publication = new Publicaciones(publicationData);
         await publication.save();
         
         res.status(201).json({
@@ -119,17 +124,33 @@ export const updatePublication = async(req,res)=>{
         }
 
         //No modificar una publicación que no sea de esa persona
-        if (publication.user !== req.user.id) {
+        if (publication.user.toString() !== req.user.id){
             return res.status(403).json({
                 success: false,
                 message: 'No puedes modificar esta publicación porque no es tuya'
             });
         }
 
+        const updateData = { ...req.body };
+
+        if (req.file) {
+
+            // Eliminar imagen anterior de Cloudinary
+            if (publication.photo_public_id) {
+                await cloudinary.uploader.destroy(publication.photo_public_id);
+            }
+
+            updateData.photo = req.file.path;
+            updateData.photo_public_id = req.file.filename;
+        }
+
         const updatedPublication = await Publicaciones.findByIdAndUpdate(
             id,
-            req.body,
-            { new: true }
+            updateData,
+            {
+                new: true,
+                runValidators: true,
+            }
         );
 
         res.status(200).json({
@@ -161,7 +182,7 @@ export const deletePublication = async(req,res)=>{
         }
 
         //No eliminar una publicación que no sea de esa persona
-        if (publication.user !== req.user.id) {
+        if (publication.user.toString() !== req.user.id){
             return res.status(403).json({
                 success: false,
                 message: 'No puedes eliminar esta publicación porque no es tuya'

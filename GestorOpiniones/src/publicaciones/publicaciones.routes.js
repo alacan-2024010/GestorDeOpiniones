@@ -7,12 +7,15 @@ import {
     updatePublication,
     deletePublication
 } from './publicaciones.controller.js';
-
+import{uploadPublicationImage} from '../../middlewares/file-uploader.js';
+import { cleanUploaderFileOnFinish } from '../../middlewares/delete-file-on-error.js';
 const router = new Router;
 
 router.post(
     '/create',
     validateJWT,
+    uploadPublicationImage.single('photo'),
+    cleanUploaderFileOnFinish,
     createPublication
 )
 
@@ -30,6 +33,8 @@ router.get(
 router.put(
     '/update/:id',
     validateJWT,
+    uploadPublicationImage.single('photo'),
+    cleanUploaderFileOnFinish,
     updatePublication
 )
 
