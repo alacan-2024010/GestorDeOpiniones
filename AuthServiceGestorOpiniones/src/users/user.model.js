@@ -9,7 +9,6 @@ export const User = sequelize.define(
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
         },
-
         username: {
         type: DataTypes.STRING(100),
         allowNull: false,
@@ -22,7 +21,6 @@ export const User = sequelize.define(
             },
         }
         },
-
         email: {
         type: DataTypes.STRING(100),
         allowNull: false,
@@ -38,24 +36,26 @@ export const User = sequelize.define(
             }
         }
         },
-
         password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notNull: {
-            msg: 'La contraseña es obligatoria'
-            },
-            notEmpty: {
-            msg: 'La contraseña no puede estar vacía'
-            },
-            len: {
-            args: [8, 100],
-            msg: 'La contraseña debe tener mínimo 8 caracteres'
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                notNull: {
+                msg: 'La contraseña es obligatoria'
+                },
+                notEmpty: {
+                msg: 'La contraseña no puede estar vacía'
+                },
+                len: {
+                args: [8, 100],
+                msg: 'La contraseña debe tener mínimo 8 caracteres'
+                }
             }
-        }
         },
-
+        photo: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         isActive: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
