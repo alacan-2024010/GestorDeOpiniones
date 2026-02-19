@@ -69,7 +69,10 @@ export const changePassword = async(req, res)=>{
             newPassword
         );
 
-        res.status(201).json(result)
+        return res.status(200).json({
+          success: true,
+          data:result
+        });
         
     } catch (error) {
       return res.status(400).json({
@@ -77,4 +80,50 @@ export const changePassword = async(req, res)=>{
         message: error.message
       });
     }
+}
+
+export const changeUsername = async(req,res)=>{
+  try {
+    const result = await authService.changeUsername(
+      req.user.id,
+      req.body.newUsername
+    );
+
+    return res.status(200).json({
+      success: true,
+      data:result
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success:false,
+      message: error.message
+    })
+  }
+}
+
+export const changePhoto = async(req,res)=>{
+  try {
+
+    if (!req.file) {
+        return res.status(400).json({
+            success: false,
+            message: 'Debe ingresar una imagen'
+        });
+      }
+
+    const result = await authService.changePhoto(
+      req.user.id,
+      req.file.path
+    )
+
+    return res.status(200).json({
+      success:true,
+      data:result
+    })
+  } catch (error) {
+    return res.status(400).json({
+      success:false,
+      message:error.message
+    })
+  }
 }

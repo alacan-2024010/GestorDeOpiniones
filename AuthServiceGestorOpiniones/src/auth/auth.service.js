@@ -88,5 +88,54 @@ export const changePassword = async (userId, oldPassword, newPassword) => {
 
     return {
         message: 'Contraseña actualizada correctamente'
+    }
+}
+
+export const changeUsername = async(userId, newUsername)=>{
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+        throw new Error('ID de usuario no encontrado');
+    }
+
+    if (!newUsername || newUsername.trim() === '') {
+        throw new Error('El username no puede estar vacío');
+    }
+
+    //para verificar si el nuevo username ya existe
+    const usernameExists = await User.findOne({
+        where:{username: newUsername}
+    })
+
+    if (usernameExists && usernameExists.id !== userId) {
+        throw new Error('El username ya está en uso');
+    }
+
+    user.username = newUsername;
+    await user.save();
+
+    return {
+        message: 'Username actualizado correctamente',
+        user
     };
-};
+}
+
+export const changePhoto = async(userId, newPhoto)=>{
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+        throw new Error('ID de usuario no encontrado');
+    }
+
+    if(!newPhoto){
+        throw new Error('Debes enviar una imagen para tu perfil')
+    }
+
+    user.photo = newPhoto;
+    await user.save();
+
+    return{
+        message: 'Imagen de perfil actualizada correctamente',
+        user
+    }
+}

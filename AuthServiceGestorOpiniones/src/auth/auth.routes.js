@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { register, login, verify , changePassword} from './auth.controller.js'
+import { register, login, verify , changePassword, changeUsername, changePhoto} from './auth.controller.js'
 import { validateJWT } from '../../middlewares/validate-jwt.js'
 import { uploadUserImage } from '../../middlewares/file-uploader.js';
 import { cleanUploaderFileOnFinish } from '../../middlewares/delete-file-on-error.js';
@@ -33,6 +33,19 @@ router.put(
     '/changePassword',
     validateJWT,
     changePassword
+);
+
+router.put(
+    '/changeUsername',
+    validateJWT,
+    changeUsername
+);
+
+router.put(
+    '/changePhoto',
+    validateJWT,
+    uploadUserImage.single('photo'),
+    changePhoto
 );
 
 export default router;
