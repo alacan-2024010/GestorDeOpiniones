@@ -5,15 +5,19 @@
 
 # AuthServiceGestorOpiniones
 //Primero se ubica en la carpeta de autenticación:
+
     C:\GestorDeOpiniones\AuthServiceGestorOpiniones
 
 **Importante: Crear el archivo .env**
+
 /El archivo .env no está incluido en el repositorio, por lo tanto debe crearse manualmente
 
 **Paso 1: Crear el archivo** 
+
 /Dentro de la carpeta AuthServiceGestorOpiniones, crear un archivo llamado: **.env**
 
 **Paso 2: Agregar la siguiente configuración**
+    
     NODE_ENV=development
     PORT=3006
 
@@ -50,19 +54,31 @@
 **Esta API trabaja con PostgreSQL utilizando Docker**
 
 **Pasos para ejecutar la API**
+
 **1. Abrir Docker Desktop**
+
 **2. Instalar dependencias: pnpm install**
+
 **3. Levantar el contenedor de Docker: docker compose up -d**
+
 **4. Verificar que el contenedor esté activo en Docker Desktop**
+
 **5. Iniciar la API: pnpm run dev**
 
 **Endpoints para probar en Postman**
+
 /-RegisterUser(POST)
+
 /-VerificationUser(GET)
+
 /-VerifyUser(POST)
+
 /-Perfil(GET)
+
 /-ChangePassword(PUT)
+
 /-ChangeUsername(PUT)
+
 /-ChangePhoto(PUT)
 
 **Importante**
@@ -87,12 +103,14 @@
 3. Usar el token generado después de la verificación
 
 //Ubicarse en la carpeta de GestorOpiniones:
+
     C:\GestorDeOpiniones\GestorOpiniones
 
 **Paso 1: Crear el archivo** 
 /Dentro de la carpeta GestorOpiniones, crear un archivo llamado: **.env**
 
 **Paso 2: Agregar la siguiente configuración**
+
     NODE_ENV = development
     PORT = 3005
 
@@ -111,16 +129,22 @@
 **Esta API trabaja con MongoDB**
 
 **Pasos para ejecutar la API**
+
 **1. Instalar dependencias: pnpm install**
+
 **2. Verificar que MongoDB esté ejecutándose**
+
 **3. Iniciar el proyecto: pnpm run dev**
 
 **Endpoints para probar en Postman**
 **En algunos de estos endpoints tienes que usar el token que se genera cuando verificas tu cuenta**
 
 **Uso del token**
+
 1. Ir a la pestaña Authorization
+
 2. En el campo Type, seleccionar Bearer Token
+
 3. En el campo Token, pegar el token generado después de verificar la cuenta
 
 **Si el token no es válido o ha expirado, la API dara error**
@@ -132,29 +156,46 @@ Los endpoints que permiten subir imágenes (ChangePhoto y CreatePublication) req
 No utilizar la imagen que aparece guardada en la colección de Postman, ya que esa ruta corresponde a un archivo local de otra computadora y generará error
 
 Para subir correctamente una imagen:
+
 1. Ir al endpoint correspondiente
+
 2. En Body seleccionar form-data
+
 3. En el campo tipo File, hacer clic en "Select Files"
+
 4. Elegir una imagen desde su computadora
+
 5. Enviar la solicitud
 
 **Endpoints de Publications**
+
 /-CreatePublication(POST)**Requiere Token**
+
 /-GetPublications(GET)
+
 /-GetPublicationsById(GET)**Requiere Token**
+
 /-Perfil(GET)
+
 /-UpdatePublication(PUT)**Requiere Token**
+
 /-DeletePublication(DELETE)**Requiere Token**
 
 **Endpoints de Comments**
+
 /-CreateComment(POST)**Requiere Token**
+
 /-GetYourComments(GET)**Requiere Token**
+
 /-UpdateComment(PUT)**Requiere Token**
+
 /-DeleteComment(DELETE)**Requiere Token**
 
 **Uso del programa**
 1. Sin token válido → acceso denegado
+
 2. Solo usuarios autenticados pueden crear opiniones
+
 3. Solo el usuario creador puede editar o eliminar su opinión
 
 
