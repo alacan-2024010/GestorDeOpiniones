@@ -143,3 +143,7 @@
 1. Sin token válido → acceso denegado
 2. Solo usuarios autenticados pueden crear opiniones
 3. Solo el usuario creador puede editar o eliminar su opinión
+
+
+**Endpoints de Postman**
+/Dentro de la carpeta /postman se encuentra la colección exportada lista para importar en Postman.

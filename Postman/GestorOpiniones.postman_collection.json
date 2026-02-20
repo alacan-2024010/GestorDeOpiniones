@@ -1,0 +1,672 @@
+{
+  "info": {
+    "_postman_id": "d1bc4968-93bf-453d-89a0-adacad4b18c0",
+    "name": "GestorOpiniones",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48332460",
+    "_collection_link": "https://go.postman.co/collection/48332460-d1bc4968-93bf-453d-89a0-adacad4b18c0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AuthGestorOpiniones",
+      "item": [
+        {
+          "name": "RegisterUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "Alanfloo",
+                  "type": "text",
+                  "uuid": "3fc841a9-f0ea-465c-b9a6-754e8eceb98d"
+                },
+                {
+                  "key": "email",
+                  "value": "alan2007lf@gmail.com",
+                  "type": "text",
+                  "uuid": "4d66e6b6-4d39-414c-82e1-c92f92309689"
+                },
+                {
+                  "key": "password",
+                  "value": "Alan2024010",
+                  "type": "text",
+                  "uuid": "48684cad-e1dd-4ed6-9483-5cd68cbcf99f"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "1c7f1ca1-543d-4996-99f9-5c548becf14f",
+                  "src": "/C:/Users/Francisco/Downloads/user.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "VerifyUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"alconlacan@gmail.com\",\r\n    \"password\":\"Alan2024010\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "VerificationUser",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/verify/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1MzM4ODQsImV4cCI6MTc3MTU3NzA4NH0.axLa6_2t7EqHIVaYKoQ2Zhn23eHUOFOjNozUOeGZTAw",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "verify",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1MzM4ODQsImV4cCI6MTc3MTU3NzA4NH0.axLa6_2t7EqHIVaYKoQ2Zhn23eHUOFOjNozUOeGZTAw"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Perfil",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1MzM5NzQsImV4cCI6MTc3MTUzNTc3NH0.dncVIRhCdE1ALsbqxDkSjQMnpK1pzkzKdkSaqSk5o60",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ChangePassword",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1MzU5NTEsImV4cCI6MTc3MTUzNzc1MX0.9nPFMwSOmKnhE0R_YCNpwxK5ZIJgrwI_yWFTA3bPhpI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"oldPassword\":\"Alan202020\",\r\n    \"newPassword\":\"Alan2024010\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/changePassword",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "changePassword"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ChangeUsername",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1NDA0NDgsImV4cCI6MTc3MTU0MjI0OH0.cZbzay3hqTkamVJY16AsdrVObJfFTjF0lqPbFMzS3uY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newUsername\":\"Alanfloooo\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/changeUsername",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "changeUsername"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ChangePhoto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1NDA0NDgsImV4cCI6MTc3MTU0MjI0OH0.cZbzay3hqTkamVJY16AsdrVObJfFTjF0lqPbFMzS3uY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "a9faadf1-7a43-4216-8350-b043ebfee61d",
+                  "src": "/C:/Users/Francisco/Downloads/cliente.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/changePhoto",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "changePhoto"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Publications",
+      "item": [
+        {
+          "name": "CreatePublication",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1Mzg3MDUsImV4cCI6MTc3MTU0MDUwNX0.l0CIGrd5zZEsaY1u2dJkqwfVJy4rUAaTniFbaXXXA_s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Guatemala",
+                  "type": "text",
+                  "uuid": "bc81f616-560b-4cde-b014-f5ca896ea3d2"
+                },
+                {
+                  "key": "category",
+                  "value": "Historia",
+                  "type": "text",
+                  "uuid": "198a73c1-d530-4697-b7c4-5d9c1b35fb02"
+                },
+                {
+                  "key": "content",
+                  "value": "Es el país mas hermoso del mundo.",
+                  "type": "text",
+                  "uuid": "eba9e4c4-298f-4993-831d-03859020eff6"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "913cd872-435c-4265-abf0-2ef27bbfc5d8",
+                  "src": "/C:/Users/Francisco/Downloads/tikal.JPG"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "publications",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetPublications",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/listar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "publications",
+                "listar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetPublicationsById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1Mzg3MDUsImV4cCI6MTc3MTU0MDUwNX0.l0CIGrd5zZEsaY1u2dJkqwfVJy4rUAaTniFbaXXXA_s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/listar/699789a2b16a8ec4b584c3ff",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "publications",
+                "listar",
+                "699789a2b16a8ec4b584c3ff"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdatePublication",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1Mzg3MDUsImV4cCI6MTc3MTU0MDUwNX0.l0CIGrd5zZEsaY1u2dJkqwfVJy4rUAaTniFbaXXXA_s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"GUATEMALA\",\r\n    \"category\": \"Información\",\r\n    \"content\": \"El mejor país del mundo.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/update/699789a2b16a8ec4b584c3ff",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "publications",
+                "update",
+                "699789a2b16a8ec4b584c3ff"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeletePublication",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1Mzg3MDUsImV4cCI6MTc3MTU0MDUwNX0.l0CIGrd5zZEsaY1u2dJkqwfVJy4rUAaTniFbaXXXA_s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/delete/699789a2b16a8ec4b584c3ff",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "publications",
+                "delete",
+                "699789a2b16a8ec4b584c3ff"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "CreateComment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkZmMwNTgyOS1lZmJkLTQ4MzctYWFmNy1kMWJmY2U2ZTcwY2EiLCJpYXQiOjE3NzE0NTQ2MzksImV4cCI6MTc3MTQ1NjQzOX0.iZVziPu7cBi7mU7HkFO41zmnIxnOvvH_LQhJT_g4dKQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"comment\": \"Muy buena publicación\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/comments/create/699641692bac9587fc1e7e65",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "comments",
+                "create",
+                "699641692bac9587fc1e7e65"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetYourComments",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkZmMwNTgyOS1lZmJkLTQ4MzctYWFmNy1kMWJmY2U2ZTcwY2EiLCJpYXQiOjE3NzE0NTQ2MzksImV4cCI6MTc3MTQ1NjQzOX0.iZVziPu7cBi7mU7HkFO41zmnIxnOvvH_LQhJT_g4dKQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/comments/listar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "comments",
+                "listar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateComment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkZmMwNTgyOS1lZmJkLTQ4MzctYWFmNy1kMWJmY2U2ZTcwY2EiLCJpYXQiOjE3NzE0NTQ2MzksImV4cCI6MTc3MTQ1NjQzOX0.iZVziPu7cBi7mU7HkFO41zmnIxnOvvH_LQhJT_g4dKQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"comment\": \"Muy mala publicación\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/comments/update/699645b1d85c7a4ec386c569",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "comments",
+                "update",
+                "699645b1d85c7a4ec386c569"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteComment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkZmMwNTgyOS1lZmJkLTQ4MzctYWFmNy1kMWJmY2U2ZTcwY2EiLCJpYXQiOjE3NzE0NTQ2MzksImV4cCI6MTc3MTQ1NjQzOX0.iZVziPu7cBi7mU7HkFO41zmnIxnOvvH_LQhJT_g4dKQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorOpiniones/v1/comments/delete/69964591d85c7a4ec386c566",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorOpiniones",
+                "v1",
+                "comments",
+                "delete",
+                "69964591d85c7a4ec386c566"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
