@@ -123,7 +123,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1MzM5NzQsImV4cCI6MTc3MTUzNTc3NH0.dncVIRhCdE1ALsbqxDkSjQMnpK1pzkzKdkSaqSk5o60",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1NDA0NDgsImV4cCI6MTc3MTU0MjI0OH0.cZbzay3hqTkamVJY16AsdrVObJfFTjF0lqPbFMzS3uY",
                   "type": "string"
                 }
               ]
@@ -425,7 +425,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkY2MyZjI1MC1hZjYxLTRkNjUtYTgxZS03MzE0ZjIwZjczM2EiLCJpYXQiOjE3NzE1Mzg3MDUsImV4cCI6MTc3MTU0MDUwNX0.l0CIGrd5zZEsaY1u2dJkqwfVJy4rUAaTniFbaXXXA_s",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYTI5M2M2Yy1jYjhlLTRkMTQtYjIxMy04ZWE0MThmNDk0MzYiLCJpYXQiOjE3NzE1NTU3OTQsImV4cCI6MTc3MTU1NzU5NH0.oJeypzUrjwNLK0-mSiHDAnUyLF1QDYZQ5PsH4zSr5I8",
                   "type": "string"
                 }
               ]
@@ -433,16 +433,36 @@
             "method": "PUT",
             "header": [],
             "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"title\": \"GUATEMALA\",\r\n    \"category\": \"Información\",\r\n    \"content\": \"El mejor país del mundo.\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "GUATEMALA",
+                  "type": "text",
+                  "uuid": "34145f7f-cb31-4d21-8039-3e0186dbfbde"
+                },
+                {
+                  "key": "category",
+                  "value": "Información",
+                  "type": "text",
+                  "uuid": "a965ed7a-6c34-4213-9ebf-92a95d46a95e"
+                },
+                {
+                  "key": "content",
+                  "value": "El mejor país del mundo.",
+                  "type": "text",
+                  "uuid": "a22d872d-bf02-47a2-9a4e-19543b04f0b6"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "dc48dc1a-cfc6-4548-b143-698c39de57ed",
+                  "src": "/C:/Users/Francisco/Downloads/tikal.JPG"
                 }
-              }
+              ]
             },
             "url": {
-              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/update/699789a2b16a8ec4b584c3ff",
+              "raw": "http://localhost:3005/gestorOpiniones/v1/publications/update/6997cc6d7fe834f79c6a70c3",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -453,7 +473,7 @@
                 "v1",
                 "publications",
                 "update",
-                "699789a2b16a8ec4b584c3ff"
+                "6997cc6d7fe834f79c6a70c3"
               ]
             }
           },

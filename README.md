@@ -125,6 +125,19 @@
 
 **Si el token no es válido o ha expirado, la API dara error**
 
+## Importante sobre la subida de imágenes
+
+Los endpoints que permiten subir imágenes (ChangePhoto y CreatePublication) requieren que el usuario cargue una imagen nueva desde su propia computadora
+
+No utilizar la imagen que aparece guardada en la colección de Postman, ya que esa ruta corresponde a un archivo local de otra computadora y generará error
+
+Para subir correctamente una imagen:
+1. Ir al endpoint correspondiente
+2. En Body seleccionar form-data
+3. En el campo tipo File, hacer clic en "Select Files"
+4. Elegir una imagen desde su computadora
+5. Enviar la solicitud
+
 **Endpoints de Publications**
 /-CreatePublication(POST)**Requiere Token**
 /-GetPublications(GET)
@@ -147,3 +160,5 @@
 
 **Endpoints de Postman**
 /Dentro de la carpeta /postman se encuentra la colección exportada lista para importar en Postman.
+
+**El link que proporciona postman al subir una imagen se puede copiar y pegar en un navegador para ver la foto ya subida**
